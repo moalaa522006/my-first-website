@@ -1,0 +1,164 @@
+<nav>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#projects">Projects</a>
+    <a href="#">Contact</a>
+</nav>
+<h1>Willkommen bei unserem Unternehmen</h1>
+<p>I am learning programming</p>
+<button onclick="alert('welcome to my website!')" style="background-color: blue;color: white;">press here</button>
+    <style>
+        body{
+            background-color: lightblue;
+            text-align: center;
+        }
+        h1{color:darkblue;
+        font-size: 40px;
+    }
+    </style>
+<div class="card" id="Services">
+    <h2>Unsere Dienstleistungen</h2>
+    <p>We create professional websites.</p>
+    <a href="mailto:mo.5.2.2006@gmail.com">
+        <button>Contact Us </button>
+    </a>
+</div>
+<style>
+    .card{
+        background-color: white;
+        padding: 25px;
+        margin: 30px auto;
+        max-width: 400px;
+        border: radius 15px;
+        box-schadow:0 4px 10px gray;
+    }
+</style>
+<style>
+    .card button{
+        background-color: darkblue;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+</style>
+<style>
+    nav{
+        background-color: darkblue;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    nav a{
+        color:white;
+        text-decoration: none;
+        margin: 15px;
+        font: size 18px;
+    }
+</style>
+<style>
+    nav a:hover {
+color:yellow;
+    }
+</style>
+<div class="card" id="about">
+    <h2>Über uns</h2>
+    <img src="https://placehold.co/600x300" alt="Company Image">
+    <p>We help businesses grow with professional websites.</p>
+</div>
+<style>
+.card img{
+    width:100%;
+    max-width: 400px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+</style>
+<body>
+    <div class="card" id="projects">
+        <h2>Our Projects</h2>
+        <p>We build modern websites for businesses. </p>
+        <img src="https://placehold.co/600x300" alt="Our Projects">
+    </div>
+</body>
+<style>
+    @media (max-width: 600px) {
+        nav {
+            display:flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .card{
+            margin: 20px 10px;
+            padding: 15px;
+        }
+        h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+<body>
+    <div class="card" id="contact">
+        <h2>Kontaktieren Sie uns</h2>
+        <p>Schreiben Sie uns eine Nachricht</p>
+        <form>
+            <input type="text" placeholder="Ihr Name">
+            <br><br>
+            <input type="email" placeholder="Ihre E-Mail">
+            <br><br>
+            <textarea id="message" placeholder="Ihre Nachricht"></textarea>
+            <br><br>
+            <p id="formMessage"></p>
+            <button type="button" onclick="checkform()">Nachricht senden</button>
+        </form>
+    </div>
+</body>
+<style>
+    form input,
+    form textarea {
+        width: 90%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    form textarea {
+        height: 120px;
+        resize: vertical;
+    }
+    form button {
+        background-color: darkblue;
+color: white;
+padding: 12px 25px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+    }
+</style>
+<body>
+    <script>
+        function checkform() {
+            let name = document.querySelector('input[type="text"]').value.trim();
+            let email =document.querySelector('input[type="email"]').value.trim();
+            let message = document.querySelector('textarea').value.trim();
+
+            let result = document.querySelector("#formMessage");
+
+            if (name === ""|| email === "" || message === "") {
+                result.textContent = "Please fill in all fields!";
+                result.style.color = "red";
+            }  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                result.textContent = "Please enter a valid email!";
+                result.style.color = "red";
+            }else {
+            result.textContent = "Thank you " + name + "! Your message is ready.";
+            result.style.color = "green";
+            }
+        }
+    </script>
+</body>
