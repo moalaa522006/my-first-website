@@ -7,17 +7,62 @@
 </nav>
 <h1>Willkommen bei unserem Unternehmen</h1>
 <p>I am learning programming</p>
-<button onclick="alert('welcome to my website!')" style="background-color: blue;color: white;">press here</button>
+<button id="welcomeBtn"
+style="background-color: blue;color: white;">
+press here
+</button>
+  <button id="darkModeBtn">Dark Mode</button>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .card {
+            scroll-margin-top: 100px;
+        }
         body{
+            padding-top: 110px;
             background-color: lightblue;
             text-align: center;
         }
         h1{color:darkblue;
         font-size: 40px;
     }
+    nav{
+        position: fixed;
+        left: 0;
+        width: 100%;
+        top: 0;
+        background-color: darkblue;
+        padding: 8px 15px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        z-index: 1000;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav a:hover {
+        color: yellow;
+    }
+    body.dark-mode {
+        background-color: #222;
+        color:white;
+    }
+    body.dark-mode h1 {
+        color: lightblue;
+    }
+body.dark-mode .card{
+    background-color: #333;
+    color: white;
+}
+body.dark-mode .card h2 {
+    color: white;
+}
     </style>
-<div class="card" id="Services">
+<div class="card" id="services">
     <h2>Unsere Dienstleistungen</h2>
     <p>We create professional websites.</p>
     <a href="mailto:mo.5.2.2006@gmail.com">
@@ -32,6 +77,13 @@
         max-width: 400px;
         border: radius 15px;
         box-schadow:0 4px 10px gray;
+        .card {
+            transition: transform 0.3s ease, box-schadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translate(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0,0.2);
+        }
     }
 </style>
 <style>
@@ -103,15 +155,15 @@ color:yellow;
     <div class="card" id="contact">
         <h2>Kontaktieren Sie uns</h2>
         <p>Schreiben Sie uns eine Nachricht</p>
-        <form>
-            <input type="text" placeholder="Ihr Name">
+        <form action="https://formsubmit.co/mo.alaa.5.2.2006@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Ihr Name" required>
             <br><br>
-            <input type="email" placeholder="Ihre E-Mail">
+            <input type="email" name="email" placeholder="Ihre E-Mail" required>
             <br><br>
-            <textarea id="message" placeholder="Ihre Nachricht"></textarea>
+            <textarea id="message" name="message" placeholder="Ihre Nachricht" required></textarea>
             <br><br>
+            <button type="submit">Nachricht senden</button>
             <p id="formMessage"></p>
-            <button type="button" onclick="checkform()">Nachricht senden</button>
         </form>
     </div>
 </body>
@@ -161,4 +213,39 @@ font-size: 16px;
             }
         }
     </script>
+    <script>
+        const welcomeBtn = document.getElementById("welcomeBtn");
+        welcomeBtn.addEventListener("click", function() {
+            alert("Welome to my website!");
+        });
+    </script>
+    <script>
+        const darkModeBtn = document.getElementById("darkModeBtn");
+        // Load saved preference
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+            darkModeBtn.textContent = "Light Mode"
+        }
+        darkModeBtn.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+                darkModeBtn.textContent = "Light Mode"
+            } else {
+                localStorage.setItem("thema", "light");
+                darkModeBtn.textContent = " Dark Mode";
+            }
+        })
+        
+    </script>
 </body>
+<style>
+    button {
+        cursor: pointer;
+        transition: transform 0.3s ease, box-schadow 0.3s ease;
+    }
+    button:hover {
+        transform: translate(-3px);
+        box-shadow: 0 5px 12px rgba(0, 0, 0,0.2);
+    }
+</style>
